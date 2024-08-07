@@ -11,6 +11,11 @@ function App() {
     setInputValue(value);
   };
 
+  const handleDeleteTodo = (index: number) => {
+    const updatedTodos = todos.filter((_, idx) => idx !== index);
+    setTodos(updatedTodos);
+  };
+
   const handleAddTodo = () => {
     if (inputValue === "") {
       alert("Cant add Empty ToDo!");
@@ -18,8 +23,6 @@ function App() {
     setTodos([...todos, inputValue]);
     setInputValue("");
   };
-
-  console.log(todos);
 
   return (
     <>
@@ -30,7 +33,11 @@ function App() {
         </div>
         <div className="todoContainer">
           {todos.map((todo, idx) => (
-            <Todo todoValue={todo} key={idx} />
+            <Todo
+              todoValue={todo}
+              key={idx}
+              onDelete={() => handleDeleteTodo(idx)}
+            />
           ))}
         </div>
       </div>
