@@ -3,6 +3,7 @@ import { useState } from "react";
 import Add from "./components/AddBtn/Add";
 import Input from "./components/InputField/Input";
 import Todo from "./components/Todo/Todo";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   const [todos, setTodos] = useState<Array<string>>([]);
@@ -19,15 +20,17 @@ function App() {
 
   const handleAddTodo = () => {
     if (inputValue === "") {
-      alert("Cant add Empty ToDo!");
+      toast.error("Empty Todo !");
       return;
     }
     setTodos([...todos, inputValue]);
     setInputValue("");
+    toast.success("Todo Added");
   };
 
   return (
     <>
+      <Toaster />
       <div className="main">
         <h1 className="heading">TODOLIST - AI2680</h1>
         <div className="topBar">
