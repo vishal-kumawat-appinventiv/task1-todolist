@@ -1,8 +1,12 @@
-const Add = () => {
+import React from 'react';
+
+interface AddProps {
+  onClick: () => void;
+}
+
+const Add: React.FC<AddProps> = ({ onClick }) => {
   return (
-    <>
-      <button>Add</button>
-    </>
+    <button onClick={onClick}>Add</button>
   );
 };
 

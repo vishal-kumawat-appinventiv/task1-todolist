@@ -1,9 +1,7 @@
-const Todo = () => {
+const Todo = ({ todoValue }: { todoValue: string }) => {
   return (
     <>
-      <div>//TODO - radio btn //TODO - todo text 
-        
-      </div>
+      <p>{todoValue}</p>
     </>
   );
 };
