@@ -2,3 +2,16 @@
   margin: 0;
   padding: 0;
 }
+
+.main {
+  margin: 50px;
+}
+
+.topBar {
+  display: flex;
+}
+
+.heading {
+  margin-bottom: 30px;
+  font-size: 3rem;
+}

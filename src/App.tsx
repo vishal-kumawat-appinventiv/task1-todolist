@@ -1,3 +1,4 @@
+import "./index.css";
 import { useState } from "react";
 import Add from "./components/AddBtn/Add";
 import Input from "./components/InputField/Input";
@@ -19,6 +20,7 @@ function App() {
   const handleAddTodo = () => {
     if (inputValue === "") {
       alert("Cant add Empty ToDo!");
+      return;
     }
     setTodos([...todos, inputValue]);
     setInputValue("");
@@ -27,6 +29,7 @@ function App() {
   return (
     <>
       <div className="main">
+        <h1 className="heading">TODOLIST - AI2680</h1>
         <div className="topBar">
           <Input value={inputValue} onChange={handleInputChange} />
           <Add onClick={handleAddTodo} />

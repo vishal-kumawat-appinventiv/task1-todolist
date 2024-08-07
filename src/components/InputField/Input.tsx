@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import "./input.css";
 
 interface InputProps {
   value: string;
@@ -10,13 +11,7 @@ const Input: React.FC<InputProps> = ({ value, onChange }) => {
     onChange(event.target.value);
   };
 
-  return (
-    <input
-      type="text"
-      value={value}
-      onChange={(e) => handleChange(e)}
-    />
-  );
+  return <input type="text" value={value} onChange={(e) => handleChange(e)} />;
 };
 
 export default Input;

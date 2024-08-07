@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import "./todo.css";
 
 interface TodoProps {
   todoValue: string;
@@ -8,8 +9,10 @@ interface TodoProps {
 const Todo: React.FC<TodoProps> = ({ todoValue, onDelete }) => {
   return (
     <>
-      <p>{todoValue}</p>
-      <button onClick={onDelete}>Delete</button>
+      <div className="todoItem">
+        <p>{todoValue}</p>
+        <button onClick={onDelete}>Delete</button>
+      </div>
     </>
   );
 };
