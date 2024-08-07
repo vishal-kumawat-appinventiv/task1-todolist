@@ -11,6 +11,8 @@
 .todoItem p {
   margin: 0;
   flex: 1;
+  margin-left: 5px;
+  font-size: 20px;
 }
 
 .todoItem button {
@@ -19,4 +21,16 @@
   background-color: #ff4d4d;
   color: white;
   cursor: pointer;
+}
+
+.todoText {
+  display: flex;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.strikeBtn {
+  margin-bottom: 2px;
 }

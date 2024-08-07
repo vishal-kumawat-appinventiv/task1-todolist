@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./todo.css";
 
 interface TodoProps {
@@ -7,10 +7,23 @@ interface TodoProps {
 }
 
 const Todo: React.FC<TodoProps> = ({ todoValue, onDelete }) => {
+  const [strike, setStrike] = useState<boolean>(false);
+
+  const toggleStrikeThrough = () => {
+    setStrike(!strike);
+  };
+
   return (
     <>
       <div className="todoItem">
-        <p>{todoValue}</p>
+        <div className="todoText">
+          <input type="checkbox" onClick={toggleStrikeThrough} className="strikeBtn"/>
+          {strike === false ? (
+            <p>{todoValue}</p>
+          ) : (
+            <p className="strike">{todoValue}</p>
+          )}
+        </div>
         <button onClick={onDelete}>Delete</button>
       </div>
     </>
