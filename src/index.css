@@ -3,25 +3,27 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
 :root {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Roboto Condensed", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
 }
 
 .main {
   margin: 30px;
-  background-color: #e4e8bd;
+  background-color: #e4e6cd;
   padding: 30px;
   border-radius: 5px;
   min-height: 85vh;
   min-width: 50vw;
+  box-shadow: 14px 14px 48px #bebebe,
+    -14px -14px 48px #ffffff;
 }
 
 .topBar {

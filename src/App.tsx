@@ -93,7 +93,7 @@ function App() {
     <>
       <Toaster />
       <div className="main">
-        <h1 className="heading">TODOLIST - AI2680</h1>
+        <h1 className="heading">Task 1 : Todolist - AI2680</h1>
         <div className="topBar">
           <Input value={inputValue} onChange={handleInputChange} />
           <Add onClick={handleAddTodo} />
@@ -114,6 +114,9 @@ function App() {
               />
             ))
           )}
+        </div>
+        <div>
+          <h4>Made with 💛 in Appinventiv </h4>
         </div>
       </div>
     </>
