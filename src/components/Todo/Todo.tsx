@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import "./todo.css";
+import { TodoType } from "../../types";
 
 interface TodoProps {
-  todoValue: string;
+  todo: TodoType;
   onDelete: () => void;
+  onToggle: () => void;
 }
 
-const Todo: React.FC<TodoProps> = ({ todoValue, onDelete }) => {
-  const [strike, setStrike] = useState<boolean>(false);
-
-  const toggleStrikeThrough = () => {
-    setStrike(!strike);
-  };
-
+const Todo: React.FC<TodoProps> = ({ todo, onDelete, onToggle }) => {
   return (
     <>
       <div className="todoItem">
         <div className="todoText">
-          <input type="checkbox" onClick={toggleStrikeThrough} className="strikeBtn"/>
-          {strike === false ? (
-            <p>{todoValue}</p>
+          <input
+            type="checkbox"
+            checked={todo.todoStatus === "completed"}
+            onChange={onToggle}
+            className="strikeBtn"
+          />
+          {todo?.todoStatus === "incomplete" ? (
+            <p>{todo?.todoValue}</p>
           ) : (
-            <p className="strike">{todoValue}</p>
+            <p className="strike">{todo?.todoValue}</p>
           )}
         </div>
         <button onClick={onDelete}>Delete</button>

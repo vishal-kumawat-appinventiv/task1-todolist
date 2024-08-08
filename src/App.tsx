@@ -4,9 +4,10 @@ import Add from "./components/AddBtn/Add";
 import Input from "./components/InputField/Input";
 import Todo from "./components/Todo/Todo";
 import toast, { Toaster } from "react-hot-toast";
+import { TodoType } from "./types";
 
 function App() {
-  const [todos, setTodos] = useState<Array<string>>([]);
+  const [todos, setTodos] = useState<Array<TodoType>>([]);
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleInputChange = (value: string) => {
@@ -16,16 +17,38 @@ function App() {
   const handleDeleteTodo = (index: number) => {
     const updatedTodos = todos.filter((_, idx) => idx !== index);
     setTodos(updatedTodos);
+    toast.success("Todo Deleted");
   };
 
   const handleAddTodo = () => {
     if (inputValue === "") {
-      toast.error("Empty Todo !");
+      toast.error("Empty Todo!");
       return;
     }
-    setTodos([...todos, inputValue]);
+    setTodos([
+      ...todos,
+      {
+        todoValue: inputValue,
+        todoStatus: "incomplete",
+      },
+    ]);
     setInputValue("");
     toast.success("Todo Added");
+  };
+
+  const handleToggleTodoStatus = (index: number) => {
+    const updatedTodos = todos.map((todo, idx) =>
+      idx === index
+        ? {
+            ...todo,
+            // todoStatus: todo.todoStatus === "incomplete" ? "completed" : "incomplete",
+            todoStatus: (todo.todoStatus === "incomplete"
+              ? "completed"
+              : "incomplete") as "incomplete" | "completed",
+          }
+        : todo
+    );
+    setTodos(updatedTodos);
   };
 
   return (
@@ -38,11 +61,12 @@ function App() {
           <Add onClick={handleAddTodo} />
         </div>
         <div className="todoContainer">
-          {todos.map((todo, idx) => (
+          {todos.map((eachTodo, idx) => (
             <Todo
-              todoValue={todo}
+              todo={eachTodo}
               key={idx}
               onDelete={() => handleDeleteTodo(idx)}
+              onToggle={() => handleToggleTodoStatus(idx)}
             />
           ))}
         </div>
