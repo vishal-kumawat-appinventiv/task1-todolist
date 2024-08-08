@@ -34,3 +34,7 @@
 .strikeBtn {
   margin-bottom: 2px;
 }
+
+.textPara {
+  min-width: 100%;
+}

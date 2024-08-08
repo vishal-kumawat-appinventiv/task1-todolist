@@ -20,9 +20,9 @@ const Todo: React.FC<TodoProps> = ({ todo, onDelete, onToggle }) => {
             className="strikeBtn"
           />
           {todo?.todoStatus === "incomplete" ? (
-            <p>{todo?.todoValue}</p>
+            <p className="textPara">{todo?.todoValue}</p>
           ) : (
-            <p className="strike">{todo?.todoValue}</p>
+            <p className="strike textPara">{todo?.todoValue}</p>
           )}
         </div>
         <button onClick={onDelete}>Delete</button>
