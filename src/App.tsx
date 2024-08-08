@@ -1,5 +1,5 @@
 import "./index.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Add from "./components/AddBtn/Add";
 import Input from "./components/InputField/Input";
 import Todo from "./components/Todo/Todo";
@@ -8,7 +8,10 @@ import { TodoType } from "./types";
 import Drop from "./components/Dropdown/Drop";
 
 function App() {
-  const [todos, setTodos] = useState<Array<TodoType>>([]);
+  const [todos, setTodos] = useState<Array<TodoType>>(() => {
+    const savedTodos = localStorage.getItem("todos");
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
   const [inputValue, setInputValue] = useState<string>("");
   const [filteredTodos, setFilteredTodos] = useState<Array<TodoType>>([]);
 
@@ -80,6 +83,11 @@ function App() {
       setFilteredTodos(todos);
     }
   };
+
+  useEffect(() => {
+    setFilteredTodos(todos);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <>
