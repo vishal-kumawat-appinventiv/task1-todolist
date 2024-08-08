@@ -5,6 +5,7 @@ import Input from "./components/InputField/Input";
 import Todo from "./components/Todo/Todo";
 import toast, { Toaster } from "react-hot-toast";
 import { TodoType } from "./types";
+import Drop from "./components/Dropdown/Drop";
 
 function App() {
   const [todos, setTodos] = useState<Array<TodoType>>([]);
@@ -50,6 +51,18 @@ function App() {
     setTodos(updatedTodos);
   };
 
+  const options = ["all", "incomplete", "complete"];
+
+  const handleFilter = (value: string) => {
+    if (value === "incomplete") {
+      setTodos(todos.filter((todo) => todo.todoStatus === "incomplete"));
+    } else if (value === "complete") {
+      setTodos(todos.filter((todo) => todo.todoStatus === "completed"));
+    } else if (value === "all") {
+      setTodos(todos);
+    }
+  };
+
   return (
     <>
       <Toaster />
@@ -58,6 +71,7 @@ function App() {
         <div className="topBar">
           <Input value={inputValue} onChange={handleInputChange} />
           <Add onClick={handleAddTodo} />
+          <Drop options={options} currOption={handleFilter} />
         </div>
         <div className="todoContainer">
           {todos.map((eachTodo, idx) => (
