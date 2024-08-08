@@ -4,4 +4,5 @@ button {
     background: rgb(95, 192, 95);
     font-size: 1rem;
     max-height: 72px;
+    border: none;
 }

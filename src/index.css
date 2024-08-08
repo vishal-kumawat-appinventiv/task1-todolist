@@ -9,6 +9,10 @@
   font-style: normal;
 }
 
+html {
+  background-color: rgb(170, 197, 221);
+}
+
 :root {
   display: flex;
   align-items: center;
@@ -22,8 +26,6 @@
   border-radius: 5px;
   min-height: 85vh;
   min-width: 50vw;
-  box-shadow: 14px 14px 48px #bebebe,
-    -14px -14px 48px #ffffff;
   overflow-y: auto;
   max-height: 80vh;
 }
