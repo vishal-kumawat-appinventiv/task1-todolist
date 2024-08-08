@@ -41,10 +41,9 @@ function App() {
       idx === index
         ? {
             ...todo,
-            // todoStatus: todo.todoStatus === "incomplete" ? "completed" : "incomplete",
             todoStatus: (todo.todoStatus === "incomplete"
               ? "completed"
-              : "incomplete") as "incomplete" | "completed",
+              : "incomplete") as TodoType["todoStatus"],
           }
         : todo
     );
