@@ -92,14 +92,20 @@ function App() {
           <Drop options={options} currOption={handleFilter} />
         </div>
         <div className="todoContainer">
-          {filteredTodos.map((eachTodo, idx) => (
-            <Todo
-              todo={eachTodo}
-              key={idx}
-              onDelete={() => handleDeleteTodo(idx)}
-              onToggle={() => handleToggleTodoStatus(idx)}
-            />
-          ))}
+          {filteredTodos.length === 0 ? (
+            <>
+              <h2>No Todo Found !</h2>
+            </>
+          ) : (
+            filteredTodos.map((eachTodo, idx) => (
+              <Todo
+                todo={eachTodo}
+                key={idx}
+                onDelete={() => handleDeleteTodo(idx)}
+                onToggle={() => handleToggleTodoStatus(idx)}
+              />
+            ))
+          )}
         </div>
       </div>
     </>
