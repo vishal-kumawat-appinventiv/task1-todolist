@@ -11,7 +11,9 @@ interface TodoProps {
 const Todo: React.FC<TodoProps> = ({ todo, onDelete, onToggle }) => {
   return (
     <>
-      <div className="todoItem">
+      <div
+        className={`todoItem ${todo?.todoStatus === "completed" && "bg-green"}`}
+      >
         <div className="todoText">
           <input
             type="checkbox"

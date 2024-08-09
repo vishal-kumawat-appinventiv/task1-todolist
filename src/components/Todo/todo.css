@@ -38,3 +38,7 @@
 .textPara {
   min-width: 100%;
 }
+
+.bg-green {
+  background-color: rgb(200, 255, 200);
+}
