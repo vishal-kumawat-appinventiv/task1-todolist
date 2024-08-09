@@ -36,6 +36,12 @@ function App() {
       });
       return;
     }
+    if (handleDuplicateTodo(inputValue)) {
+      toast.error("Dulpicate Todo Found!", {
+        position: "top-right",
+      });
+      return;
+    }
     setTodos([
       ...todos,
       {
@@ -54,6 +60,10 @@ function App() {
     toast.success("Todo Added", {
       position: "top-right",
     });
+  };
+
+  const handleDuplicateTodo = (message: string) => {
+    return todos.some((todo) => todo.todoValue === message);
   };
 
   const handleToggleTodoStatus = (index: number) => {
