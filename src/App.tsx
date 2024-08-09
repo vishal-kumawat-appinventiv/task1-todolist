@@ -24,7 +24,7 @@ function App() {
   };
 
   const handleDeleteTodo = (index: number) => {
-    const updatedTodos = todos.filter((_, idx) => idx !== index);
+    const updatedTodos = todos.filter((todo) => todo?.id !== index);
     setTodos(updatedTodos);
     setFilteredTodos(updatedTodos);
     toast.success("Todo Deleted", {
@@ -45,9 +45,11 @@ function App() {
       });
       return;
     }
+    const randomID = Math.floor(Math.random() * 1000) + 1;
     setTodos([
       ...todos,
       {
+        id: randomID,
         todoValue: inputValue,
         todoStatus: "incomplete",
       },
@@ -55,6 +57,7 @@ function App() {
     setFilteredTodos([
       ...todos,
       {
+        id: randomID,
         todoValue: inputValue,
         todoStatus: "incomplete",
       },
@@ -70,8 +73,8 @@ function App() {
   };
 
   const handleToggleTodoStatus = (index: number) => {
-    const updatedTodos = todos.map((todo, idx) =>
-      idx === index
+    const updatedTodos = todos.map((todo) =>
+      todo?.id === index
         ? {
             ...todo,
             todoStatus: (todo.todoStatus === "incomplete"
@@ -156,8 +159,8 @@ function App() {
               <Todo
                 todo={eachTodo}
                 key={idx}
-                onDelete={() => handleDeleteTodo(idx)}
-                onToggle={() => handleToggleTodoStatus(idx)}
+                onDelete={() => handleDeleteTodo(eachTodo?.id)}
+                onToggle={() => handleToggleTodoStatus(eachTodo?.id)}
               />
             ))
           )}
