@@ -14,9 +14,16 @@ const Drop: React.FC<DropdownProps> = ({ options, currOption }) => {
     setIsOpen(!isOpen);
   };
 
+  const handleCapitalToSmall = (option: string) => {
+    if (option === "Completed") return "completed";
+    if (option === "Incomplete") return "incomplete";
+    if (option === "All") return "all";
+  };
+
   const handleOptionClick = (option: string) => {
+    const smallOption = handleCapitalToSmall(option);
     setSelectedOption(option);
-    currOption(option);
+    currOption(smallOption!);
     setIsOpen(false);
   };
 

@@ -81,14 +81,14 @@ function App() {
     setFilteredTodos(updatedTodos);
   };
 
-  const options = ["all", "incomplete", "complete"];
+  const options = ["All", "Incomplete", "Completed"];
 
   const handleFilter = (value: string) => {
     if (value === "incomplete") {
       setFilteredTodos(
         todos.filter((todo) => todo.todoStatus === "incomplete")
       );
-    } else if (value === "complete") {
+    } else if (value === "completed") {
       setFilteredTodos(todos.filter((todo) => todo.todoStatus === "completed"));
     } else if (value === "all") {
       setFilteredTodos(todos);
