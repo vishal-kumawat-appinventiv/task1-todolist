@@ -96,6 +96,12 @@ function App() {
   };
 
   const handleClearAll = () => {
+    if (todos.length === 0) {
+      toast.error("Already Cleared.", {
+        position: "top-right",
+      });
+      return;
+    }
     setTodos([]);
     setFilteredTodos([]);
     toast.success("All Todo Cleared", {
