@@ -1,5 +1,5 @@
 import "./index.css";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Add from "./components/AddBtn/Add";
 import Input from "./components/InputField/Input";
 import Todo from "./components/Todo/Todo";
@@ -7,6 +7,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { TodoType } from "./types";
 import Drop from "./components/Dropdown/Drop";
 import Clear from "./components/ClearAllBtn/Clear";
+import Search from "./components/SearchInput/Search";
+import debounce from "lodash.debounce";
 
 function App() {
   const [todos, setTodos] = useState<Array<TodoType>>(() => {
@@ -14,6 +16,7 @@ function App() {
     return savedTodos ? JSON.parse(savedTodos) : [];
   });
   const [inputValue, setInputValue] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<string>("");
   const [filteredTodos, setFilteredTodos] = useState<Array<TodoType>>([]);
 
   const handleInputChange = (value: string) => {
@@ -109,6 +112,23 @@ function App() {
     });
   };
 
+  const debounceSearch = useCallback(
+    debounce((value: string) => {
+      const lowercasedValue = value.toLowerCase();
+      setFilteredTodos(
+        todos.filter((todo) =>
+          todo.todoValue.toLowerCase().includes(lowercasedValue)
+        )
+      );
+    }, 500),
+    [todos]
+  );
+
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+    debounceSearch(value);
+  };
+
   useEffect(() => {
     setFilteredTodos(todos);
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -121,6 +141,7 @@ function App() {
         <h1 className="heading">Task 1 : Todolist - AI2680</h1>
         <div className="topBar">
           <Input value={inputValue} onChange={handleInputChange} />
+          <Search value={searchValue} onChange={handleSearchChange} />
           <Add onClick={handleAddTodo} />
           <Clear onClick={handleClearAll} />
           <Drop options={options} currOption={handleFilter} />
