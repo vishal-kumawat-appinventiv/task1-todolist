@@ -1,0 +1,8 @@
+.clearBtn {
+    padding: 20px;
+    min-width: 200px;
+    background: rgb(163, 159, 204);
+    font-size: 1rem;
+    max-height: 72px;
+    border: none;
+}

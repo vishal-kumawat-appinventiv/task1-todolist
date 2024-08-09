@@ -6,6 +6,7 @@ import Todo from "./components/Todo/Todo";
 import toast, { Toaster } from "react-hot-toast";
 import { TodoType } from "./types";
 import Drop from "./components/Dropdown/Drop";
+import Clear from "./components/ClearAllBtn/Clear";
 
 function App() {
   const [todos, setTodos] = useState<Array<TodoType>>(() => {
@@ -84,6 +85,14 @@ function App() {
     }
   };
 
+  const handleClearAll = () => {
+    setTodos([]);
+    setFilteredTodos([]);
+    toast.success("All Todo Cleared", {
+      position: "top-right",
+    });
+  };
+
   useEffect(() => {
     setFilteredTodos(todos);
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -97,6 +106,7 @@ function App() {
         <div className="topBar">
           <Input value={inputValue} onChange={handleInputChange} />
           <Add onClick={handleAddTodo} />
+          <Clear onClick={handleClearAll} />
           <Drop options={options} currOption={handleFilter} />
         </div>
         <div className="todoContainer">
