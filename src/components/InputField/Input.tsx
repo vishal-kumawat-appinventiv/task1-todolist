@@ -11,7 +11,15 @@ const Input: React.FC<InputProps> = ({ value, onChange }) => {
     onChange(event.target.value);
   };
 
-  return <input type="text" value={value} onChange={(e) => handleChange(e)} placeholder="Type here.."/>;
+  return (
+    <input
+      className="addInput"
+      type="text"
+      value={value}
+      onChange={(e) => handleChange(e)}
+      placeholder="Add Todo.."
+    />
+  );
 };
 
 export default Input;

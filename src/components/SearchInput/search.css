@@ -1,4 +1,4 @@
-input {
+.search {
     flex: 1;
     padding: 20px;
     margin-bottom: 20px;
@@ -6,6 +6,6 @@ input {
     border: none;
 }
 
-input:focus {
+.search:focus {
     outline: none;
 }

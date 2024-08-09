@@ -6,7 +6,7 @@ interface AddProps {
 }
 
 const Add: React.FC<AddProps> = ({ onClick }) => {
-  return <button onClick={onClick}>Add</button>;
+  return <button className="addBtn" onClick={onClick}>Add</button>;
 };
 
 export default Add;

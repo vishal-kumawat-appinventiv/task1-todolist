@@ -140,8 +140,8 @@ function App() {
       <div className="main">
         <h1 className="heading">Task 1 : Todolist - AI2680</h1>
         <div className="topBar">
-          <Input value={inputValue} onChange={handleInputChange} />
           <Search value={searchValue} onChange={handleSearchChange} />
+          <Input value={inputValue} onChange={handleInputChange} />
           <Add onClick={handleAddTodo} />
           <Clear onClick={handleClearAll} />
           <Drop options={options} currOption={handleFilter} />

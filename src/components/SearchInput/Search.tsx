@@ -13,6 +13,7 @@ const Input: React.FC<SearchProps> = ({ value, onChange }) => {
 
   return (
     <input
+      className="search"
       type="text"
       value={value}
       onChange={(e) => handleChange(e)}
