@@ -1,7 +1,5 @@
 import "./index.css";
 import { useCallback, useEffect, useState } from "react";
-import Add from "./components/AddBtn/Add";
-import Input from "./components/InputField/Input";
 import Todo from "./components/Todo/Todo";
 import toast, { Toaster } from "react-hot-toast";
 import { TodoType } from "./types";
@@ -9,6 +7,7 @@ import Drop from "./components/Dropdown/Drop";
 import Clear from "./components/ClearAllBtn/Clear";
 import Search from "./components/SearchInput/Search";
 import debounce from "lodash.debounce";
+import AddDrop from "./components/AddTodoDrop/AddDrop";
 
 function App() {
   const [todos, setTodos] = useState<Array<TodoType>>(() => {
@@ -144,8 +143,11 @@ function App() {
         <h1 className="heading">Task 1 : Todolist - AI2680</h1>
         <div className="topBar">
           <Search value={searchValue} onChange={handleSearchChange} />
-          <Input value={inputValue} onChange={handleInputChange} />
-          <Add onClick={handleAddTodo} />
+          <AddDrop
+            inputValue={inputValue}
+            onChange={handleInputChange}
+            onClick={handleAddTodo}
+          />
           <Clear onClick={handleClearAll} />
           <Drop options={options} currOption={handleFilter} />
         </div>

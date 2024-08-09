@@ -25,7 +25,7 @@ html {
   padding: 30px;
   border-radius: 5px;
   min-height: 85vh;
-  min-width: 50vw;
+  min-width: 60vw;
   overflow-y: auto;
   max-height: 80vh;
 }

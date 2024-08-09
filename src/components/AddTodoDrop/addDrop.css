@@ -1,0 +1,29 @@
+.addDropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.addDropdownButton {
+    background-color: #4caf50;
+    color: rgb(0, 0, 0);
+    min-height: 72px;
+    padding: 10px 60px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    width: 250px;
+}
+
+.addDropdownMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+}
